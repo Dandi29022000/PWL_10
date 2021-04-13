@@ -83,6 +83,7 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $article = Article::find($id);
+        
         $article->title = $request->title;
         $article->content = $request->content;
 
