@@ -83,7 +83,7 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $article = Article::find($id);
-        
+
         $article->title = $request->title;
         $article->content = $request->content;
 
@@ -111,6 +111,7 @@ class ArticleController extends Controller
 
     public function cetak_pdf(){
         $articles = Article::all();
+        
         $pdf = PDF::loadview('articles.articles_pdf', ['articles'=>$articles]);
         return $pdf->stream();
     }
