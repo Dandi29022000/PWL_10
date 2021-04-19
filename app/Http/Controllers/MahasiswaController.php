@@ -82,6 +82,14 @@ class MahasiswaController extends Controller
         
         $kelas = new Kelas;
         $kelas->id = $request->get('Kelas');
+        
+        if($request->file('image')){
+            $image_name = $request->file('image')->store('images', 'public');
+        } else {
+            $image_name = 'images/dandi.png';
+            $image_name = 'images/pram.png';
+            $image_name = 'images/auzan.png';
+        }
 
         // Fungsi eloquent untuk menambah data dengan relasi belongsTo
         $mahasiswa->kelas()->associate($kelas);
